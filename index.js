@@ -4,10 +4,11 @@ import os from "os";
 import chalk from "chalk";
 
 const userName = os.userInfo().username;
+const deviceName = os.hostname();
 const rl = readLine.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: chalk.blue(`${userName} % `),
+  prompt: chalk.green(`${userName}@${deviceName}:~$ `),
 });
 
 console.log(`Welcome master ${userName}`);
@@ -28,7 +29,7 @@ rl.on("line", (input) => {
     } else if (stderr) {
       console.error(chalk.yellow.underline(`stderr: ${stderr}`));
     } else {
-      console.log(chalk.blueBright(stdout));
+      console.log(chalk.whiteBright(stdout));
     }
     rl.prompt();
   });
